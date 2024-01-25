@@ -26,7 +26,13 @@ function App() {
     setTimeout(() => {
       setPosts(mockPosts);
     }, 1000);
-  });
+    fetch("https//jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((json) => setPosts(json))
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <Container>
       <Header />
