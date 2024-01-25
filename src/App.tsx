@@ -1,6 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import styled from "@emotion/styled";
+
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+const Header = styled.div`
+  background-color: #ffffff;
+  padding: 20px;
+  width: calc(100%-40px);
+  margin-bottom: 20px;
+`;
 
 function App() {
   return (
