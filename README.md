@@ -11,10 +11,12 @@
 
 ## fetch
 
+```
 fetch(URL, {
-method: "POST", // 사용할 메소드를 선택 ("GET", "POST", "PUT", "DELETE")
-headers: { "content-Type" : "application/json" } // 요청의 headers에 전달할 값
-body: JSON.stringify(data), // 요청의 body에 전달할 값
-mode : "cors" , // cors, no-cors, same-origin 등과 같은 값을 설정
-cache : "no-cache", // 캐시 사용 여부 (no-cache, reload, force-cache, only-if-cached)
+    method: "POST", // 사용할 메소드를 선택 ("GET", "POST", "PUT", "DELETE")
+    headers: { "content-Type" : "application/json" } // 요청의 headers에 전달할 값
+    body: JSON.stringify(data), // 요청의 body에 전달할 값
+    mode : "cors" , // cors, no-cors, same-origin 등과 같은 값을 설정
+    cache : "no-cache", // 캐시 사용 여부 (no-cache, reload, force-cache, only-if-cached)
 })
+```
