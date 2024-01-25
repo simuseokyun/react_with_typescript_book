@@ -1,9 +1,11 @@
-import "./App.css";
-import styled from "@emotion/styled";
-import { useState, useEffect } from "react";
-import { Header } from "components/Header";
-import { BlogPost } from "components/BlogPost";
-import mockPosts from "mock/posts.json";
+import './App.css';
+import styled from '@emotion/styled';
+import { useState, useEffect } from 'react';
+import { Header } from 'components/Header';
+import { Button } from 'components/Button';
+import { Form } from 'components/Form';
+import { BlogPost } from 'components/BlogPost';
+import mockPosts from 'mock/posts.json';
 
 const Container = styled.div`
   height: 100vh;
@@ -12,7 +14,14 @@ const Container = styled.div`
   align-items: center;
   background: #eeeeee;
   overflow: scroll;
+  position: relative;
 `;
+const ButtonContainer = styled.div`
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+`;
+
 interface Post {
   readonly id: number;
   readonly userId: number;
@@ -22,11 +31,12 @@ interface Post {
 
 function App() {
   const [posts, setPosts] = useState<ReadonlyArray<Post>>([]);
+  const [showForm, setShowForm] = useState(false);
   useEffect(() => {
     setTimeout(() => {
       setPosts(mockPosts);
     }, 1000);
-    fetch("https//jsonplaceholder.typicode.com/posts")
+    fetch('https://jsonplaceholder.typicode.com/posts')
       .then((response) => response.json())
       .then((json) => setPosts(json))
       .catch((error) => {
@@ -39,7 +49,22 @@ function App() {
       {posts.map((post) => (
         <BlogPost key={post.id} title={post.title} body={post.body} />
       ))}
-      ;
+      <ButtonContainer>
+        <Button
+          label="등록"
+          color="black"
+          onClick={() => {
+            setShowForm(true);
+          }}
+        />
+      </ButtonContainer>
+      {showForm && (
+        <Form
+          onClose={() => {
+            setShowForm(false);
+          }}
+        />
+      )}
     </Container>
   );
 }
