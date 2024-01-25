@@ -18,19 +18,17 @@ const Body = styled.div`
   text-overflow: ellipsis;
   overflow: hidden;
 `;
+interface Props {
+  readonly title: string;
+  readonly body: string;
+}
 
-export const BlogPost = () => {
+export const BlogPost = ({ title, body }: Props) => {
+  // 타입스크립트에서 주로 사용되는 구조 분해 할당   { a, b } : Props
   return (
     <Container>
-      <Title>
-        sunt aut facere repellat provident occaecati excepturi optio
-        reprehenderit
-      </Title>
-      <Body>
-        quia et suscipit\nsuscipit recusandae consequuntur expedita et
-        cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem
-        sunt rem eveniet architecto
-      </Body>
+      <Title>{title}</Title>
+      <Body>{body}</Body>
     </Container>
   );
 };
